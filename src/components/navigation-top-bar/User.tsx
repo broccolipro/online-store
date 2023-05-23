@@ -21,6 +21,7 @@ const User = () => {
                 id={'menu'}
                 anchorEl={anchor}
                 open={Boolean(anchor)}
+                keepMounted
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right',
