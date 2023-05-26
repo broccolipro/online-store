@@ -1,11 +1,17 @@
-import React from 'react';
 import StoreIcon from '@mui/icons-material/Store';
-import {Box, Typography} from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
-const Logo = ({xs, md, fg}: {xs: string, md: string, fg: number}) => {
+const Logo = () => {
     return (
-        <Box sx={{flexGrow: fg, display: {xs: xs, md: md}, alignItems: 'center' }}>
-            <StoreIcon fontSize={'large'}/>
+        <Box sx={
+            {
+                display: 'flex',
+                flexGrow: { xs: 1, md: 0 },
+                alignItems: 'center',
+                order: { xs: 1, md: 1 }
+            }}>
+
+            <StoreIcon fontSize={'large'} />
             <Typography
                 variant="h6"
                 component={'a'}
@@ -15,7 +21,7 @@ const Logo = ({xs, md, fg}: {xs: string, md: string, fg: number}) => {
                     margin: '0 5px'
                 }}
             >
-                AppStore
+                maib
             </Typography>
         </Box>
     );

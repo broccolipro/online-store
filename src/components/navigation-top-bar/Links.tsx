@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Box, IconButton, Menu, MenuItem, Typography} from "@mui/material";
+import React, { useState } from 'react';
+import { Box, Button, IconButton, Menu, MenuItem, Typography } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Links = () => {
@@ -13,11 +13,11 @@ const Links = () => {
         setAnchorElNav(null)
     }
 
-    const pages = ['Products', 'Nothing']
+    const pages = ['Home', 'My orders', 'Cart']
 
     return (
         <>
-            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }} >
+            <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, order: { xs: 0 } }} >
                 <IconButton
                     size="large"
                     aria-label="account of current user"
@@ -49,10 +49,29 @@ const Links = () => {
                 >
                     {pages.map((page) => (
                         <MenuItem key={page} onClick={handleCloseNavMenu}>
-                            <Typography textAlign="center">{page}</Typography>
+                            <Typography textAlign="center" >{page}</Typography>
                         </MenuItem>
                     ))}
                 </Menu>
+            </Box>
+            <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, marginLeft: 4, order: { md: 1 } }} >
+                {pages.map((page) => (
+                    <Button
+                        key={page}
+                        onClick={handleCloseNavMenu}
+                        sx={{
+                            my: 2,
+                            color: 'inherit',
+                            display: 'block',
+                            '&:hover': {
+                                backgroundColor: 'rgba(0, 0, 0, 0.04)'
+                            },
+                            fontSize: 'small'
+                        }}
+                    >
+                        {page}
+                    </Button>
+                ))}
             </Box>
         </>
     );
