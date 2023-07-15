@@ -1,11 +1,10 @@
-import { Padding } from '@mui/icons-material'
-import { Button, Card, CardActions, CardContent, CardMedia, Grid, Typography } from '@mui/material'
-import React from 'react'
+import { Card, CardContent, CardMedia, Grid, Typography } from '@mui/material'
+
 
 function ProductCard() {
     return (
-        <Grid item xs={6} md={4}>
-            <Card sx={{ maxWidth: 260, padding: 0}}>
+        <Grid item xs={6} md={4} for1100={3} for850={4}>
+            <Card sx={{ maxWidth: 260}}>
                 <CardMedia
                     component="img"
                     alt="green iguana"
@@ -20,10 +19,6 @@ function ProductCard() {
                         Lizards are a widespread group of squamate reptiles
                     </Typography>
                 </CardContent>
-                {/* <CardActions sx={{ padding: 0 }} >
-                    <Button size="small">Add</Button>
-                    <Button size="small">Learn</Button>
-                </CardActions> */}
             </Card>
         </Grid>
     )

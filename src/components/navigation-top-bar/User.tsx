@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { Avatar, Box, IconButton, Tooltip, Menu, MenuItem, Typography } from "@mui/material";
+import { useAppDispatch, useAppSelector } from '../../redux/store';
+import { Link } from 'react-router-dom';
+import { userSlice } from '../../redux/features/userSlice';
 
 const User = () => {
+
+    const user = useAppSelector(store => store.userState.user);
+    const { logout } = userSlice.actions
+    const dispatch = useAppDispatch()
 
     const [anchor, setAnchor] = useState<null | HTMLElement>(null);
 
@@ -13,14 +20,20 @@ const User = () => {
         setAnchor(null)
     }
 
-    const settings = ['Profile', 'Logout']
+    const handleLogout = () => {
+        setAnchor(null);
+        dispatch(logout())
+    }
 
     return (
         <Box sx={{ flexGrow: 0, order: 2, display: 'flex', alignItems: 'center' }} >
 
-            <Typography>
-                Sign in
-            </Typography>
+            {
+                !user &&
+                <Typography>
+                    <Link to={'/auth/login'} >LogIn</Link>
+                </Typography>
+            }
 
             <Tooltip title={'Open settings'} >
                 <IconButton onClick={handleOpenUserMenu} >
@@ -45,11 +58,14 @@ const User = () => {
                 }}
             >
 
-                {settings.map((setting) => (
-                    <MenuItem key={setting} onClick={handleCloseMenu}>
-                        <Typography textAlign="center">{setting}</Typography>
-                    </MenuItem>
-                ))}
+
+                <MenuItem onClick={handleCloseMenu}>
+                    <Typography textAlign="center">Profile</Typography>
+                </MenuItem>
+                <MenuItem onClick={handleLogout}>
+                    <Typography textAlign="center">LogOut</Typography>
+                </MenuItem>
+
 
             </Menu>
         </Box>

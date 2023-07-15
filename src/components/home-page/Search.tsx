@@ -14,8 +14,8 @@ const theme = createTheme({
 })
 
 const handleKeyPress = (event: any) => {
-    if (event.key === 'Enter') { // Проверяем, что нажата клавиша Enter
-        event.preventDefault(); // Отменяем стандартное действие (например, отправку формы)
+    if (event.key === 'Enter') { 
+        event.preventDefault();
 
         alert('Hello bratunea')
     }
@@ -25,8 +25,10 @@ const SearchBox = styled(Box)(({ theme }) => ({
     display: 'flex',
     height: '40px',
     alignItems: 'stretch',
+    padding: '16px 16px',
     paddingTop: '20px',
     paddingBottom: '20px',
+    justifyContent: 'center',
     marginBottom: '20px '
 }))
 
@@ -36,7 +38,7 @@ function Search() {
     const isMobile = useMediaQuery(themeGlob.breakpoints.down('sm'));
 
     return (
-        <SearchBox sx={{ display: 'flex', justifyContent: 'center' }} >
+        <SearchBox>
             <ThemeProvider theme={theme}>
                 <TextField
                     type="search"
@@ -46,7 +48,8 @@ function Search() {
                         borederWidth: '1px',
                         width: {
                             md: '70%'
-                        }
+                        },
+                        height: { xs: '30px' }
                      }}
                     onKeyDown={handleKeyPress}
                     InputProps={{
